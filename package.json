@@ -4,7 +4,8 @@
   "description": "",
   "main": "",
   "scripts": {
-    "test": "http-server"
+    "test": "http-server",
+    "css-build": "node-sass --omit-source-map-url ./css/sass/mystyle.scss ./css/mycss/mystyle.css"
   },
   "repository": {
     "type": "git",
@@ -17,10 +18,12 @@
   },
   "homepage": "https://github.com/YuxuanWang-CHINA/project23#readme",
   "dependencies": {
-    "bulma": "^0.7.2",
+    "bulma": "^0.7.4",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.3.1"
   },
   "devDependencies": {
-    "http-server": "^0.11.1"
+    "http-server": "^0.11.1",
+    "node-sass": "^4.11.0"
   }
 }
