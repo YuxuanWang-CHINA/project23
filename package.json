@@ -5,7 +5,8 @@
   "main": "",
   "scripts": {
     "test": "http-server",
-    "css-build": "node-sass --omit-source-map-url ./css/sass/mystyle.scss ./css/mycss/mystyle.css"
+    "css-build": "node-sass --omit-source-map-url ./css/sass/mystyle.scss ./css/mycss/mystyle.css",
+    "md5": "node ./developing/md5.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "http-server": "^0.11.1",
+    "md5": "^2.2.1",
     "node-sass": "^4.11.0"
   }
 }

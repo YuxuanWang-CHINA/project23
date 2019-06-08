@@ -1,7 +1,10 @@
 @charset "utf-8";
 
 $violet: #aa00ff;
+$lavenderBlush: #FFF0F5;
+
 $primary: $violet;
+$body-background-color: $lavenderBlush;
 $column-gap: 0.25rem;
 
 @import "../../node_modules/bulma/bulma.sass";

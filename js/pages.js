@@ -48,10 +48,20 @@ function navActiveSet(activeName) {
 //main.html
 function mainBegin() {
     $('#heroBody1').hide();
-    makeOne('mainCards', 'info', 'Event1', 'Tomorrow', 'Airport');
+    $.get("../examples/cardData.json", function(data, status) {
+        makeSome('mainCards', data)
+    });
 }
 
-function makeOne($inPlaceId, $coloris, mainThing, thatTime, mapPlace) {
+function makeSome($inPlaceId, inJson) {
+    let datas = inJson.cards;
+    $.each(datas, function(index, inobj) {
+        let outTime = timeChange(inobj.thatTime);
+        makeOne($inPlaceId, inobj.cardColor, inobj.mainEvent, outTime, inobj.mapPlace, inobj.log)
+    });
+}
+
+function makeOne($inPlaceId, coloris, mainThing, thatTime, mapPlace, elId) {
     let columnDiv = document.createElement('div');
     let mainDiv = document.createElement('div');
 
@@ -76,7 +86,7 @@ function makeOne($inPlaceId, $coloris, mainThing, thatTime, mapPlace) {
 
     let mainDivCa = mainDiv.classList;
     mainDivCa.add('notification');
-    mainDivCa.add('is-' + $coloris);
+    mainDivCa.add('is-' + coloris);
     mainDivCa.add('has-text-centered');
     mainDivCa.add('ia-card');
 
@@ -111,5 +121,58 @@ function makeOne($inPlaceId, $coloris, mainThing, thatTime, mapPlace) {
     mainDiv.appendChild(inP2);
     columnDiv.appendChild(mainDiv);
 
+    columnDiv.id = elId;
+
     document.getElementById($inPlaceId).appendChild(columnDiv);
+}
+
+function timeChange(inTime) {
+    let nDate = new Date();
+
+    let numMonth = inTime.substring(4, 6);
+    console.log(numMonth);
+    let reMon;
+    switch (numMonth) {
+        case '01':
+            reMon = 'Jan.';
+            break;
+        case '02':
+            reMon = 'Feb.';
+            break;
+        case '03':
+            reMon = 'Mar.';
+            break;
+        case '04':
+            reMon = 'Apr.';
+            break;
+        case '05':
+            reMon = 'May.';
+            break;
+        case '06':
+            reMon = 'Jun.';
+            break;
+        case '07':
+            reMon = 'Jul.';
+            break;
+        case '08':
+            reMon = 'Aug.';
+            break;
+        case '09':
+            reMon = 'Sep.';
+            break;
+        case '10':
+            reMon = 'Oct.';
+            break;
+        case '11':
+            reMon = 'Nov.';
+            break;
+        case '12':
+            reMon = 'Dec.';
+            break;
+    };
+    let numDay = inTime.substring(6, 8);
+
+
+    let reTime = reMon+numDay;
+    return reTime;
 }
